@@ -1,0 +1,20 @@
+# Deny-by-default at the repo root; allowlist only what we want tracked.
+# Claude Code adds new state directories over time (sessions/, cache/, etc.)
+# and some contain secrets — keep the default "ignore" so nothing leaks
+# without an explicit opt-in below.
+/*
+
+# Config & portable customizations
+!/.gitignore
+!/skills/
+!/agents/
+!/commands/
+!/hooks/
+!/output-styles/
+!/settings.json
+!/keybindings.json
+!/CLAUDE.md
+
+# Never track local overrides or credentials, even if allowlisted above
+/settings.local.json
+/.credentials.json
