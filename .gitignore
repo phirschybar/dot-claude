@@ -6,6 +6,7 @@
 
 # Config & portable customizations
 !/.gitignore
+!/README.md
 !/skills/
 !/agents/
 !/commands/
