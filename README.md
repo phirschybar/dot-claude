@@ -17,6 +17,11 @@ A deny-by-default `.gitignore` allowlists only:
 
 Ephemeral/local/sensitive state stays out: sessions, caches, projects, credentials, `settings.local.json`, file history, plans, shell snapshots, etc.
 
+## Skills
+
+- `pr-review` — produces a PENDING GitHub PR review with inline comments and a body summary; user submits manually from the GH UI.
+- `linear-ticket` — on any Linear URL or bare ticket ID (e.g. `FRG-252`), fetches the issue via the Linear MCP connector (overview, comment thread, linked PRs/branches) before acting on the request. Requires the `claude.ai Linear` connector to be connected on the account (connector is managed via claude.ai, not tracked in this repo).
+
 ## Setup on a new machine
 
 ```sh
@@ -29,6 +34,10 @@ git init -b main
 git remote add origin https://github.com/phirschybar/dot-claude.git
 git fetch
 git reset origin/main   # keep local files; just adopt git history
+
+# Tracked files from the repo that don't yet exist locally will show as
+# "deleted" (present in index, missing from working tree). Restore them:
+git restore .
 ```
 
 ## Adding new skills / agents / commands
