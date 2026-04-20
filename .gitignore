@@ -19,3 +19,4 @@
 # Never track local overrides or credentials, even if allowlisted above
 /settings.local.json
 /.credentials.json
+/skills/*/.api-key

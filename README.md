@@ -21,6 +21,7 @@ Ephemeral/local/sensitive state stays out: sessions, caches, projects, credentia
 
 - `pr-review` — produces a PENDING GitHub PR review with inline comments and a body summary; user submits manually from the GH UI.
 - `linear-ticket` — on any Linear URL or bare ticket ID (e.g. `FRG-252`), fetches the issue via the Linear MCP connector (overview, comment thread, linked PRs/branches) before acting on the request. Requires the `claude.ai Linear` connector to be connected on the account (connector is managed via claude.ai, not tracked in this repo).
+- `outline-docs` — read, search, create, or update pages in the company Outline knowledge base at `documentation.locally.com` via the Outline REST API. Requires a personal API token at `skills/outline-docs/.api-key` (gitignored; bootstrap from `.api-key.example`).
 
 ## Setup on a new machine
 
