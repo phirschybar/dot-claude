@@ -48,17 +48,21 @@ Creates a pending review on a GitHub PR — major concerns anchored as inline li
 
 7. **Verify.** `gh api /repos/.../reviews/<id> --jq '{state, submitted_at}'` → expect `PENDING`, `submitted_at: null`.
 
-8. **Report back with the review URL AND this warning.**
+8. **Report back.** In your message to the user, include:
+   - The review URL.
+   - **The full review body, verbatim, in a fenced ` ```markdown ` block** so they can copy-paste straight into the GH submit modal. (See the ⚠️ below for why — the API-set body does not pre-populate the modal textarea.)
+   - A short lead-in sentence above the fenced block like: *"Paste this into the 'Leave a comment' textarea in the Finish-your-review modal before submitting, otherwise the body will be lost."*
+   - A brief plain-English summary of the review (a few sentences, not the full body) so the thread stays readable.
 
-## ⚠️ Warn the user before they submit
+## ⚠️ Why the body needs to be posted back in chat
 
-When they click "Finish your review → Submit" in the GH UI, the modal opens with an **empty body textarea** — it does NOT pre-populate from the API-set body. Whatever's in the textarea at submit becomes the body; an empty textarea overwrites the API-set body with empty.
+When the user clicks "Finish your review → Submit" in the GH UI, the modal opens with an **empty body textarea** — it does NOT pre-populate from the API-set body. Whatever's in the textarea at submit becomes the body; an empty textarea overwrites the API-set body with empty.
 
-**Options to surface in your report:**
-- Copy-paste the body into the modal before submitting (say explicitly: "copy the body from the pending review into the submit-modal textarea, otherwise it will be lost").
-- Or move everything to inline comments and submit with an intentionally empty body.
+Posting the body in the chat thread as a fenced markdown block lets the user copy it directly from the Claude UI into the modal, instead of having to open the pending review → Edit → copy from there.
 
 Inline comments submit correctly regardless — only the body has this quirk.
+
+Alternative (offer if the body is short / mostly risk-summary fluff): move everything to inline comments and submit with an intentionally empty body.
 
 ## Notes
 
