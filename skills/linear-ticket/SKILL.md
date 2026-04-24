@@ -30,6 +30,35 @@ If the ID is ambiguous (could be a file path, commit, etc.), ask before fetching
 
 5. **Then do what the user asked.** The fetch is context-gathering, not the deliverable. Proceed to the actual task (summarize, implement, review, estimate, etc.).
 
+## Keeping the description in sync with progress
+
+Once a Linear ticket has been referenced in the session, treat its **description** as a living progress log for as long as the session is working on that ticket. The user wants to open the ticket at any time and see where things stand — without asking.
+
+**Write to the description, never to comments.** Comments create noise and notifications; the description is the single source of truth the user will check.
+
+**When to update:**
+- After completing a meaningful step (investigation finished, plan agreed, code change landed, PR opened, blocker hit, decision made).
+- When scope or approach changes.
+- Not on every tool call. If nothing material has changed since the last update, don't write.
+
+**How to update:**
+1. Re-fetch the issue with `get_issue` to get the current description (it may have been edited since you last saw it).
+2. Preserve the original description content. Append or maintain a dedicated progress section at the bottom, clearly delimited — e.g.:
+   ```
+   ---
+   ## Progress (auto-updated by Claude)
+   _Last updated: <ISO date>_
+
+   - [x] Investigated auth middleware — confirmed root cause is X
+   - [x] PR opened: #1234
+   - [ ] Awaiting review from @alice
+   - **Blockers:** none
+   ```
+3. Call `save_issue` with the issue ID and the new full description. Do not omit the original body.
+4. Keep it scannable — bullets, short lines, current status first. This is for the user's glance, not a changelog.
+
+If multiple Linear tickets come up in one session, maintain this for each.
+
 ## Notes
 
 - If no Linear MCP connector is available in the session, say so and ask the user to paste the ticket body.
