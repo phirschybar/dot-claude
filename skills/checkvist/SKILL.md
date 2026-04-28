@@ -1,6 +1,6 @@
 ---
 name: checkvist
-description: Use when Ben asks to add, view, complete, or otherwise manage items on his personal todo list. Triggers include "add to my todos/list", "put X on my list", "what's on my list/todos", "mark X done", "what do I have to do", "checkvist". Default list is "topics" (id 619960) — use that unless he names another. ALWAYS prefix root-level items with a relevant emoji (subtasks don't need it).
+description: Use when Ben asks to add, view, complete, search, or otherwise manage items on his personal todo list. Triggers include any of "add to my todos/list", "put X on my list", "throw X on my todos", "new todo", "check my todo list", "check my todos", "what's on my list", "what's on my todos", "show my todos", "show me my list", "list my todos", "what do I have to do", "what's next on my list", "find X on my list", "mark X done", "complete X on my list", "X is done", or the word "checkvist". Default list is "topics" (id 619960) — use that unless he names another. ALWAYS prefix root-level items with a relevant emoji (subtasks don't need it).
 ---
 
 # Checkvist todo manager

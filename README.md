@@ -22,6 +22,10 @@ Ephemeral/local/sensitive state stays out: sessions, caches, projects, credentia
 - `pr-review` — produces a PENDING GitHub PR review with inline comments and a body summary; user submits manually from the GH UI.
 - `linear-ticket` — on any Linear URL or bare ticket ID (e.g. `FRG-252`), fetches the issue via the Linear MCP connector (overview, comment thread, linked PRs/branches) before acting on the request. Requires the `claude.ai Linear` connector to be connected on the account (connector is managed via claude.ai, not tracked in this repo).
 - `outline-docs` — read, search, create, or update pages in the company Outline knowledge base at `documentation.locally.com` via the Outline REST API. Requires a personal API token at `skills/outline-docs/.api-key` (gitignored; bootstrap from `.api-key.example`).
+- `laradock-worktree` — point the local laradock dev environment (`~/Locally/laradock`) at a different code path (typically a worktree at `~/Locally/.claude/worktrees/...`), copy the env/vendor/compiled assets the bind-mounted containers expect, and recreate nginx + php-fpm + workspace so the new mount takes. Triggered by phrases like "switch laradock to X" or "preview this branch in the browser".
+- `checkvist` — manage a personal Checkvist todo list. Defaults to a single configured list. Stdlib-only Python CLI exposing `add`, `list`, `find`, `complete`, `lists`. Requires credentials at `skills/checkvist/.credentials` (gitignored; bootstrap from `.credentials.example`). Auto-prefixes root-level items with an emoji per the configured convention.
+
+Per-skill secrets live alongside the skill (gitignored): `skills/<skill>/.api-key` for single-token APIs, `skills/<skill>/.credentials` for multi-value (username + key). Both patterns are blocked at the repo root in `.gitignore`.
 
 ## Setup on a new machine
 
