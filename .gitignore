@@ -20,3 +20,4 @@
 /settings.local.json
 /.credentials.json
 /skills/*/.api-key
+/skills/*/.credentials
